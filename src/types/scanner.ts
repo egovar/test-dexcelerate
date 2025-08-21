@@ -492,3 +492,45 @@ export const NEW_TOKENS_FILTERS: GetScannerResultParams = {
   maxAge: 24 * 60 * 60, // max 24 hours old
   isNotHP: true,
 };
+
+// ===== UI TYPES =====
+
+export type TabType = "trending" | "new";
+
+/**
+ * Processed token data for display
+ */
+export interface TokenData {
+  id: string;
+  tokenName: string;
+  tokenSymbol: string;
+  token0Symbol: string; // Added token0Symbol
+  tokenAddress: string;
+  pairAddress: string;
+  chain: SupportedChainName;
+  exchange: string;
+  priceUsd: number;
+  volumeUsd: number;
+  mcap: number;
+  priceChangePcs: {
+    "5m": number;
+    "1h": number;
+    "6h": number;
+    "24h": number;
+  };
+  transactions: {
+    buys: number;
+    sells: number;
+  };
+  audit: {
+    mintable: boolean;
+    freezable: boolean;
+    honeypot: boolean;
+    contractVerified: boolean;
+  };
+  tokenCreatedTimestamp: Date;
+  liquidity: {
+    current: number;
+    changePc: number;
+  };
+}
